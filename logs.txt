@@ -1,0 +1,10 @@
+WARNING:2021/06/09 17:00:30 queries.go:11: Could not find user with the ID of 5. Error: &{0xc000196630 record not found 0 0xc0001d61c0 0}
+WARNING:2021/06/09 17:35:57 queries.go:11: Could not find user with the ID of 5. Error: &{0xc000196630 record not found 0 0xc00029e1c0 0}
+WARNING:2021/06/09 17:36:09 queries.go:11: Could not find user with the ID of 43. Error: &{0xc000196630 record not found 0 0xc00029e1c0 0}
+WARNING:2021/06/09 17:37:54 queries.go:11: Could not find user with the ID of 43. Error: &{0xc0001c2630 record not found 0 0xc000290e00 0}
+2021/06/14 09:03:21 Couldn't parse the Graphql schemamust have "error" as its last return value
+	used by (*graph.RootResolver).User
+2021/06/14 09:03:29 Couldn't parse the Graphql schemamust have "error" as its last return value
+	used by (*graph.RootResolver).User
+2021/06/14 09:03:47 Couldn't parse the Graphql schemamust have "error" as its last return value
+	used by (*graph.RootResolver).User
