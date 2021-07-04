@@ -19,6 +19,23 @@ type UserResolver struct {
 	user *gqldb.User
 }
 
+// Gets all users
+func (u *RootResolver) Users() ([]*UserResolver, error) { 
+	users, err := u.db.GetAllUsers()
+	if err != nil {
+		return nil, fmt.Errorf("error [%s]: Could not fetch users", err)
+	}
+
+	userRxs := make([]*UserResolver, len(users))
+	for i := range users {
+		userRxs[i] = &UserResolver{
+			db:   u.db,
+			user: &users[i],
+		}
+	}
+	return userRxs, nil
+}
+
 // Gets the user object for UserResolvers
 func (r RootResolver) User(args struct{ ID int32 }) (*UserResolver, error) {
 	user, err := r.db.GetUserByID(uint(args.ID))
@@ -69,7 +86,6 @@ func (u *RootResolver) DeleteUser(ctx context.Context, args *struct{ ID graphql.
 		logger.Warn.Printf("user with id %d could not be deleted", id)
 		return nil, fmt.Errorf("user with id %d could not be deleted", id)
 
-		
 	}
 
 	message := fmt.Sprintf("User wit id %d has been deleted", id)

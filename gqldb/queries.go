@@ -6,6 +6,15 @@ import (
 	"github.com/graphql-basics/logger"
 )
 
+// get all Users
+func (ctx BasicDb) GetAllUsers() ([]User, error) {
+	var users []User
+	if err := ctx.db.Joins("Contact").Find(&users); err.Error != nil {
+		return nil, err.Error
+	}
+	return users, nil
+}
+
 // find User by ID
 func (ctx BasicDb) GetUserByID(id uint) (*User, error) {
 	var user User

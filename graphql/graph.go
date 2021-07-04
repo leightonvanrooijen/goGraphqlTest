@@ -33,15 +33,27 @@ func parseSchema(path string, resolver interface{}) *graphql.Schema {
 	return parsedSchema
 }
 
+func CorsMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+		if r.Method == "OPTIONS" {
+			w.WriteHeader(http.StatusOK)
+			return
+		}
+		next.ServeHTTP(w, r)
+	})
+}
+
 // Serves GraphQL Playground on root
 // Serves GraphQL endpoint at /graphql
 func ConnectGraphqQL(db gqldb.BasicDb) {
 	playground := http.FileServer(http.Dir("graphql/graphqlPlayground"))
 
 	http.Handle("/", playground)
-	http.Handle("/graphql", &relay.Handler{
+	http.Handle("/graphql", CorsMiddleware(&relay.Handler{
 		Schema: parseSchema("./graphql/schema.graphql", &RootResolver{db: db}),
-	})
+	}))
 
 	fmt.Println("serving on 8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))

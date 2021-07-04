@@ -8,3 +8,9 @@ WARNING:2021/06/09 17:37:54 queries.go:11: Could not find user with the ID of 43
 	used by (*graph.RootResolver).User
 2021/06/14 09:03:47 Couldn't parse the Graphql schemamust have "error" as its last return value
 	used by (*graph.RootResolver).User
+2021/06/16 18:45:52 Couldn't parse the Graphql schema*graph.RootResolver does not resolve "Query": missing method for field "users"
+2021/06/16 18:46:49 Couldn't parse the Graphql schema*graph.RootResolver does not resolve "Query": missing method for field "users"
+2021/06/16 18:47:21 Couldn't parse the Graphql schema*graph.RootResolver does not resolve "Query": missing method for field "users"
+2021/06/16 18:50:26 Couldn't parse the Graphql schema*graph.RootResolver does not resolve "Query": missing method for field "users"
+2021/06/16 18:53:33 Couldn't parse the Graphql schema*graph.RootResolver does not resolve "Query": missing method for field "users"
+2021/06/16 18:53:46 Couldn't parse the Graphql schema*graph.RootResolver does not resolve "Query": missing method for field "pets"

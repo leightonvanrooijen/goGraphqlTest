@@ -3,9 +3,9 @@ schema {
     mutation: Mutation
 }
 
-
 type Query {
     user(id: ID!): User!
+    users: [User!]!
     contact(id: ID!): Contact!
     pet(id: ID!): Pet
 }
